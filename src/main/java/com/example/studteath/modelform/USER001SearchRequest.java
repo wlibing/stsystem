@@ -14,6 +14,6 @@ public class USER001SearchRequest  implements Serializable {
     /**
      * ユーザーID
      */
-    @NotEmpty(message = "IDを入力してください")
+    @NotEmpty
     private String id;
 }
