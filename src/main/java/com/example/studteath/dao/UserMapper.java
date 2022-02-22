@@ -2,7 +2,6 @@ package com.example.studteath.dao;
 
 import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.entity.User;
-import com.example.studteath.modelform.USER001SearchRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 

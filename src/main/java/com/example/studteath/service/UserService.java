@@ -2,9 +2,7 @@ package com.example.studteath.service;
 
 import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.dto.USER001OutputDto;
-import com.example.studteath.entity.User;
 import com.example.studteath.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
