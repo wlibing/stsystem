@@ -24,7 +24,13 @@ public class UserService {
      * @return 検索結果
      */
     public USER001OutputDto search(USER001InputDto inputDto) {
-        USER001OutputDto outputDto = userRepository.search(inputDto);
+        USER001OutputDto outputDto = new USER001OutputDto();
+        if (inputDto.getId() > 0){
+            outputDto = userRepository.searchById(inputDto);
+        }else {
+
+        }
+
         return outputDto;
     }
 }
