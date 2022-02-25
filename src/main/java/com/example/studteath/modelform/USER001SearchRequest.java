@@ -13,6 +13,5 @@ public class USER001SearchRequest implements Serializable {
     /**
      * ユーザーID
      */
-    @NotEmpty
     private String id;
 }

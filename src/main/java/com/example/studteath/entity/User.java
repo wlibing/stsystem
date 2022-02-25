@@ -17,19 +17,19 @@ public class User {
     private Long id;
 
     /**
-     * 名前
+     * ユーザーNo
      */
-    private String name;
+    private String userNo;
 
     /**
-     * 住所
+     * パスワード
      */
-    private String address;
+    private String password;
 
     /**
-     * 電話番号
+     * 権限フラグ
      */
-    private String phone;
+    private String power_flag;
 
     /**
      * 更新日時

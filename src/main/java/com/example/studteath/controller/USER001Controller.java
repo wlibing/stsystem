@@ -59,6 +59,27 @@ public class USER001Controller {
     @PostMapping("/user/id_search")
     public String search(@Validated @ModelAttribute USER001SearchRequest user001SearchRequest, BindingResult bindingResult, Model model) {
         USER001ResponseForm from = new USER001ResponseForm();
+            // ユーザーサービス入力dtoを定義
+            USER001InputDto inputDto = new USER001InputDto();
+            BeanUtils.copyProperties(user001SearchRequest, inputDto);
+            //ユーザーサービスを呼び出し
+            USER001OutputDto outputDto = userService.search(inputDto);
+            BeanUtils.copyProperties(outputDto, from);
+            model.addAttribute("userinfo", from);
+
+        return "user/search";
+    }
+
+    /**
+     * ユーザー情報登録
+     *
+     * @param user001SearchRequest リクエストデータ
+     * @param model Model
+     * @return ユーザー情報一覧画面
+     */
+    @PostMapping("/user/id_search")
+    public String login(@Validated @ModelAttribute USER001SearchRequest user001SearchRequest, BindingResult bindingResult, Model model) {
+        USER001ResponseForm from = new USER001ResponseForm();
         // 入力チェック
         if (bindingResult.hasErrors()) {
             List<String> errorList = new ArrayList<>();
@@ -75,11 +96,7 @@ public class USER001Controller {
             inputDto.setId(Long.parseLong(user001SearchRequest.getId()));
             //ユーザーサービスを呼び出し
             USER001OutputDto outputDto = userService.search(inputDto);
-
-            from.setName(outputDto.getName());
-            from.setAddress(outputDto.getAddress());
-            from.setPhone(outputDto.getPhone());
-            BeanUtils.copyProperties(from, outputDto);
+            BeanUtils.copyProperties(outputDto, from);
             model.addAttribute("userinfo", from);
         }
 
