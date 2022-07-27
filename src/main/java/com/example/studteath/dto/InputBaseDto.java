@@ -1,5 +1,11 @@
 package com.example.studteath.dto;
 
-public class InputBaseDto {
-    private String resultCode;
+import lombok.Data;
+
+@Data
+public abstract class InputBaseDto {
+    /**
+     * ユーザーID
+     */
+    private String id;
 }

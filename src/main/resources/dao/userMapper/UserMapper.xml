@@ -3,7 +3,48 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.studteath.dao.UserMapper">
-    <select id="searchById" resultType="com.example.studteath.entity.User">
-        SELECT * FROM user WHERE id = #{id}
+    <select id="searchUser" parameterType="com.example.studteath.entity.User" resultType="com.example.studteath.entity.User">
+        SELECT * FROM user
+        <if test="disableFlag != null or id != null or userNo != null">
+            WHERE
+        </if>
+        <if test="disableFlag != null">
+            disable_flag = #{disableFlag}
+        </if>
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="passWord != null">
+            AND password = #{passWord}
+        </if>
+        <if test="userNo != null">
+            AND user_no = #{userNo}
+        </if>
+        order by update_date
+
     </select>
+    <select id="searchsearchByUserNo" resultType="com.example.studteath.entity.User">
+        SELECT * FROM user WHERE user_no = #{user_no}
+    </select>
+    <insert id="add" parameterType="com.example.studteath.entity.User">
+        insert into user(
+        user_no,
+        password,
+        power_flag,
+        disable_flag,
+        update_date,
+        update_user,
+        create_date,
+        create_user)
+        values(
+        #{userNo,jdbcType=BIGINT},
+        #{passWord,jdbcType=VARCHAR},
+        #{powerFlag,jdbcType=CHAR},
+        #{disableFlag,jdbcType=CHAR},
+        #{updateDate,jdbcType=DATE},
+        #{updateUser,jdbcType=BIGINT},
+        #{createDate,jdbcType=DATE},
+        #{createUser,jdbcType=BIGINT}
+        )
+    </insert>
 </mapper>

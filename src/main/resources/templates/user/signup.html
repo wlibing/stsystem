@@ -2,17 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>登録画面</title>
+    <title>新規画面</title>
     <link href="/css/list.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>login</h1>
+<h1>sign up</h1>
 <table>
     <tr th:if="${validationError}" th:each="error : ${validationError}">
         <td style="color: red;" th:text="${error}"></td>
     </tr>
-
 </table>
 <form th:action="@{/user/login}" th:object="${user002Request}"
       th:method="post" id="form">
@@ -22,26 +21,24 @@
     </div>
     <br/>
     <div>
-        <input type="button" value="login" onclick="loginClick()" style="width: 100px;" />
+        <input type="button" value="signup" onclick="loginClick()" style="width: 100px;" />
     </div>
-    <br/>
+    <br />
 </form>
-<a th:href="@{/signup}">入力画面へ</a>
-<a th:href="@{/searchUser}">検索</a>
 <script>
     function loginClick (){
         let userNo= document.getElementById('userNo').value;
         let password= document.getElementById('passWord').value;
 
-        // if (userNo== ''){
-        //     alert("userNoを入力してください！")
-        //     return;
-        // }
-        // if (password== ''){
-        //     alert("passwordを入力してください！")
-        //     return;
-        // }
-        document.getElementById('form').submit();
+        if (userNo== ''){
+            alert("userNoを入力してください！")
+            return;
+        }
+        if (password== ''){
+            alert("passwordを入力してください！")
+            return;
+        }
+        document.getElementById('form').onsubmit;
     }
 </script>
 </body>

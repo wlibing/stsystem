@@ -24,12 +24,17 @@ public class User {
     /**
      * パスワード
      */
-    private String password;
+    private String passWord;
 
     /**
      * 権限フラグ
      */
-    private String power_flag;
+    private String powerFlag;
+
+    /**
+     * 有効フラグ
+     */
+    private String disableFlag;
 
     /**
      * 更新日時
@@ -37,12 +42,27 @@ public class User {
     private Date updateDate;
 
     /**
+     * 更新者
+     */
+    private Long updateUser;
+
+    /**
      * 登録日時
      */
     private Date createDate;
 
     /**
+     * 登録者
+     */
+    private Long createUser;
+
+    /**
      * 削除日時
      */
     private Date deleteDate;
+
+    /**
+     * 削除者
+     */
+    private Long deleteUser;
 }

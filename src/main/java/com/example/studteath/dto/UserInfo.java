@@ -1,13 +1,11 @@
 package com.example.studteath.dto;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
 @Data
-@EqualsAndHashCode(callSuper=true)
-public class USER001OutputDto extends OutputBaseDto{
+public class UserInfo {
     /**
      * ID
      */
@@ -21,12 +19,18 @@ public class USER001OutputDto extends OutputBaseDto{
     /**
      * パスワード
      */
-    private String password;
+    private String passWord;
 
     /**
      * 権限フラグ
      */
-    private String power_flag;
+    private String powerFlag;
+
+
+    /**
+     * 有効フラグ
+     */
+    private String disableFlag;
 
     /**
      * 更新日時
@@ -42,4 +46,5 @@ public class USER001OutputDto extends OutputBaseDto{
      * 削除日時
      */
     private Date deleteDate;
+
 }
