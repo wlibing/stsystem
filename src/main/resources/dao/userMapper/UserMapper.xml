@@ -23,6 +23,26 @@
         order by update_date
 
     </select>
+    <select id="searchUserList" parameterType="com.example.studteath.entity.User" resultType="com.example.studteath.entity.User">
+        SELECT * FROM user
+        <if test="disableFlag != null or id != null or userNo != null">
+            WHERE
+        </if>
+        <if test="disableFlag != null">
+            disable_flag = #{disableFlag}
+        </if>
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="passWord != null">
+            AND password = #{passWord}
+        </if>
+        <if test="userNo != null">
+            AND user_no = #{userNo}
+        </if>
+        order by update_date
+
+    </select>
     <select id="searchsearchByUserNo" resultType="com.example.studteath.entity.User">
         SELECT * FROM user WHERE user_no = #{user_no}
     </select>
@@ -47,4 +67,25 @@
         #{createUser,jdbcType=BIGINT}
         )
     </insert>
+    <update id="delete" parameterType="Integer" >
+        update user set disable_flag='0' where id=#{id}
+    </update>
+    <update id="update" parameterType="com.example.studteath.entity.User" >
+        update user
+        set
+        <if test="userNo != null">
+            user_no =#{userNo},
+        </if>
+        <if test="passWord != null">
+            password =#{passWord},
+        </if>
+        <if test="powerFlag != null">
+            power_flag =#{powerFlag}
+        </if>
+        <if test="userNo != null or passWord != null or powerFlag != null">
+            where id =#{id}
+        </if>
+
+
+    </update>
 </mapper>

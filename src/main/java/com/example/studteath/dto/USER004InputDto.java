@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class USER003InputDto extends InputBaseDto {
+public class USER004InputDto extends InputBaseDto {
 
     /**
      * ユーザーID
@@ -16,9 +16,9 @@ public class USER003InputDto extends InputBaseDto {
     private String id;
 
     /**
-     * ユーザーNo
+     * ユーザー権限フラグ
      */
-    private String userNo;
+    private String powerFlag;
 
     /**
      * パスワード

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ユーザー情報 Service
@@ -19,15 +20,14 @@ public class USER003Service {
     private UserRepository userRepository;
 
 
-
     /**
      * ユーザー一覧情報検索
      *
      * @return 検索結果
      */
-    public USER003OutputDto searchUser(USER003InputDto inputDto) {
+    public USER003OutputDto searAllchUser(USER003InputDto inputDto) {
         USER003OutputDto out = new USER003OutputDto();
-       List<UserInfo> userInfoList =userRepository.searchUser(inputDto);
+        List<UserInfo> userInfoList = userRepository.searchAllUser(inputDto);
         out.setUserInfoList(userInfoList);
         return out;
     }

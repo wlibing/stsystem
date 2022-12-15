@@ -1,45 +1,61 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>新規画面</title>
-    <link href="/css/list.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<h1>sign up</h1>
-<table>
-    <tr th:if="${validationError}" th:each="error : ${validationError}">
-        <td style="color: red;" th:text="${error}"></td>
-    </tr>
-</table>
-<form th:action="@{/user/login}" th:object="${user002Request}"
-      th:method="post" id="form">
-    <div>
-        ユーザーNO：<input type="text" id="userNo" name="userNo" size="40" /><br>
-        パスワード：<input type="password" id="passWord" name="passWord" size="40" />
-    </div>
-    <br/>
-    <div>
-        <input type="button" value="signup" onclick="loginClick()" style="width: 100px;" />
-    </div>
-    <br />
-</form>
-<script>
-    function loginClick (){
-        let userNo= document.getElementById('userNo').value;
-        let password= document.getElementById('passWord').value;
+    <meta charset="UTF-8"></meta>
 
-        if (userNo== ''){
-            alert("userNoを入力してください！")
-            return;
-        }
-        if (password== ''){
-            alert("passwordを入力してください！")
-            return;
-        }
-        document.getElementById('form').onsubmit;
-    }
-</script>
+    <!-- Bootstrapの設定 -->
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+
+    <title>SignUp</title>
+</head>
+<body class="text-center">
+<div class="col-sm-5">
+    <div class="page-header">
+        <h1>ユーザー登録画面</h1>
+    </div>
+    <form th:method="post" th:action="@{/signup}">
+        <input type="hidden"name="id" value="12345678">
+        <table class="table table-bordered table-hover">
+            <!-- ユーザーNo -->
+            <tr>
+                <th class="active col-sm-3">ユーザNo</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="userNo" class="form-control" />
+                    </div>
+                </td>
+            </tr>
+            <!-- パスワード -->
+            <tr>
+                <th class="active">パスワード</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="passWord" class="form-control" />
+                    </div>
+                </td>
+            </tr>
+            <!-- 権限 -->
+            <tr>
+                <th class="active">権限</th>
+                <td>
+                    <div class="form-group">
+                        <div th:each="item : ${radioMarriage}">
+                            <input type="radio" name="powerFlag"
+                                   th:text="${item.key}"
+                                   th:value="${item.value}">
+                            </input>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+            <tr th:if="${errorList}" th:each="error : ${errorList}">
+                <td style="color: red;" th:text="${error}"></td>
+            </tr>
+        <button class="btn btn-primary" type="submit">ユーザー登録</button>
+    </form>
+</div>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class USER001AddRequest {
      * ユーザーNo
      */
     @NotEmpty
-    @Size(min = 8,max = 8)
+//    @Size(min = 8,max = 8)
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{validation.include-lower-case-number}")
     private String userNo;
 
@@ -28,7 +28,7 @@ public class USER001AddRequest {
      * パスワード
      */
     @NotEmpty
-    @Size(min = 8,max = 8)
+//    @Size(min = 8,max = 8)
     @Pattern(regexp = "^[a-zA-Z0-9 -/:-@\\[-\\`\\{-\\~]+$", message = "{validation.include-lower-icon-case-number}")
     private String passWord;
 

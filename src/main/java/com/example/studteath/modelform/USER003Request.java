@@ -20,4 +20,9 @@ public class USER003Request implements Serializable {
      */
     private String userNo;
 
+    /**
+     * パスワード
+     */
+    private String passWord;
+
 }
