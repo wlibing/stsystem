@@ -1,14 +1,14 @@
-package com.example.studteath.dto;
+package com.example.studteath.modelform;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * ユーザー情報 検索用リクエストデータ
  */
-@Getter
-@Setter
-public class USER003InputDto extends InputBaseDto {
+@Data
+public class USER004Request implements Serializable {
 
     /**
      * ユーザーID
@@ -16,9 +16,9 @@ public class USER003InputDto extends InputBaseDto {
     private String id;
 
     /**
-     * ユーザーNo
+     * ユーザー権限フラグ
      */
-    private String userNo;
+    private String powerFlag;
 
     /**
      * パスワード

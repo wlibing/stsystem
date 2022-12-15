@@ -1,5 +1,6 @@
 package com.example.studteath.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.Data;
@@ -39,7 +40,7 @@ public class User {
     /**
      * 更新日時
      */
-    private Date updateDate;
+    private LocalDateTime updateDate;
 
     /**
      * 更新者
@@ -49,7 +50,7 @@ public class User {
     /**
      * 登録日時
      */
-    private Date createDate;
+    private LocalDateTime createDate;
 
     /**
      * 登録者

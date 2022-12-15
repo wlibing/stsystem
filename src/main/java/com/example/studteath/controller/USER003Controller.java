@@ -42,7 +42,7 @@ public class USER003Controller {
      * ユーザー情報検索
      *
      * @param user003Request リクエストデータ
-     * @param model Model
+     * @param model          Model
      * @return ユーザー情報一覧画面
      */
     @PostMapping("/user/search")
@@ -53,10 +53,16 @@ public class USER003Controller {
         USER003InputDto inputDto = new USER003InputDto();
         BeanUtils.copyProperties(user003Request, inputDto);
         //ユーザーサービスを呼び出し
-        USER003OutputDto user003OutputDto = service.searchUser(inputDto);
+        USER003OutputDto user003OutputDto = service.searAllchUser(inputDto);
         List<UserInfo> userInfoListOut = user003OutputDto.getUserInfoList();
         from.setUserInfoList(userInfoListOut);
         model.addAttribute("userinfolist", from.getUserInfoList());
+        if (user003Request.getUserNo() != "") {
+            model.addAttribute("userNo", user003Request.getUserNo());
+        }
+        if (user003Request.getPassWord() != "") {
+            model.addAttribute("password", user003Request.getPassWord());
+        }
         return "user/search";
     }
 }

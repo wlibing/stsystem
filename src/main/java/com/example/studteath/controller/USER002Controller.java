@@ -1,11 +1,10 @@
 package com.example.studteath.controller;
 
+import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.dto.USER002InputDto;
 import com.example.studteath.dto.UserInfo;
 import com.example.studteath.entity.User;
-import com.example.studteath.modelform.USER001AddResponse;
-import com.example.studteath.modelform.USER002LoginResponse;
-import com.example.studteath.modelform.USER002Request;
+import com.example.studteath.modelform.*;
 import com.example.studteath.service.USER002Service;
 import com.example.studteath.util.Converter;
 import org.springframework.beans.BeanUtils;
@@ -26,7 +25,7 @@ import static com.example.studteath.common.Constants.RESULT_CODE_FAILD;
 
 /**
  * ユーザー情報登録
- * */
+ */
 @Controller
 public class USER002Controller {
 
@@ -34,6 +33,7 @@ public class USER002Controller {
     protected MessageSource messageSource;
     @Autowired
     USER002Service user002Service;
+
     /**
      * ユーザー情報登録
      *
@@ -45,30 +45,39 @@ public class USER002Controller {
         USER002LoginResponse res = new USER002LoginResponse();
 
         List<String> errorList = new ArrayList<>();
-      //入力チェック
-        if (bindingResult.hasErrors()){
+        //入力チェック
+        if (bindingResult.hasErrors()) {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errorList.add(messageSource.getMessage(error.getField(), null,
                         Locale.getDefault()) + error.getDefaultMessage());
             }
             res.setResultCode(RESULT_CODE_FAILD);
             res.setErrorList(errorList);
-            model.addAttribute("validationError",res.getErrorList());
+            model.addAttribute("validationError", res.getErrorList());
 
-        }else {
+        } else {
             USER002InputDto user002InputDto = new USER002InputDto();
-            BeanUtils.copyProperties(user002Request,user002InputDto);
-             UserInfo userInfo = user002Service.searchUser(user002InputDto);
-             if (null == userInfo){
-                 errorList.add("userNo or password is not true");
-                 model.addAttribute("validationError",errorList);
-             }else {
-                 return "menu/menu";
-             }
+            BeanUtils.copyProperties(user002Request, user002InputDto);
+            UserInfo userInfo = user002Service.searchUser(user002InputDto);
+            if (null == userInfo) {
+                errorList.add("userNo or password is not true");
+                model.addAttribute("validationError", errorList);
+            } else {
+                return "menu/menu";
+            }
         }
-
-
-
         return "index";
     }
+
+    /**
+     * ユーザー情報検索画面を表示
+     *
+     * @param model Model
+     * @return ユーザー情報一覧画面
+     */
+    @GetMapping(value = "/user/search")
+    public String displaySearch(Model model) {
+        return "user/add";
+    }
+
 }

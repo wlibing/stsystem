@@ -33,4 +33,14 @@ public interface UserMapper {
      * @return ユーザー情報
      */
     Integer add(User user);
+
+    /**
+     * ユーザー削除
+     */
+    Integer delete(Integer id);
+
+    /**
+     * ユーザー更新
+     */
+    Integer update(User user);
 }

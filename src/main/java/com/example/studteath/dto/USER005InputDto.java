@@ -8,21 +8,11 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class USER003InputDto extends InputBaseDto {
+public class USER005InputDto extends InputBaseDto {
 
     /**
      * ユーザーID
      */
     private String id;
-
-    /**
-     * ユーザーNo
-     */
-    private String userNo;
-
-    /**
-     * パスワード
-     */
-    private String passWord;
 
 }
