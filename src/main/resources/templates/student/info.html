@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+
+    <!-- Bootstrapの設定 -->
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+
+    <title>update</title>
+</head>
+<body>
+<div class="container">
+    <h1>ユーザー情報詳細</h1>
+    <div th:object="${userData}">
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">ユーザNO</div>
+            <div class="col pt-3 border">
+                <p th:text="*{userNo}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">権限フラグ</div>
+            <div class="col pt-3 border">
+                <p th:text="*{powerFlag}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">パスワード</div>
+            <div class="col pt-3 border">
+                <p th:text="*{passWord}"></p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="text-center">
+        <a th:attr="onclick='location.href=\'/user/edit?id=' + ${userData.id} + '\''" class="btn btn-primary">　編集　</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">-->
+            削除
+        </button>
+        <!-- モーダルダイアログ -->
+        <div class="modal fade" id="demoNormalModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="demoModalTitle">提示！</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        确定要删除此用户吗？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセール</button>
+                        <button th:attr="onclick='location.href=\'/user/delete?id=' + ${userData.id} + '\''" type="button" class="btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a th:href="@{/searchUser}" class="btn btn-secondary">一覧に戻る</a>
+    </div>
+</div>
+</body>
+</html>

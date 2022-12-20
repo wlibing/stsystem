@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="ユーザー情報一覧"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>ユーザー情報一覧</h1>
+<table>
+    <tr th:if="${validationError}" th:each="error : ${validationError}">
+        <td style="color: red;" th:text="${error}"></td>
+    </tr>
+</table>
+<form th:action="@{/user/search}" th:object="${user003Request}"
+      th:method="post">
+    <div>
+        <input type="text" name="id" hidden size="40" />
+        NO：<input type="text" name="userNo" size="40" />
+        PS：<input type="text" name="password" size="40" />
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="検索" style="width: 100px;" />
+    </div>
+    <br/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ユーザーNo</th>
+            <th>パスワード</th>
+            <th>権限フラグ</th>
+            <th>表示フラグ</th>
+            <th>更新日時</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody th:if="${userinfolist != null}">
+        <tr th:each="user, st : ${userinfolist}" class="align-middle">
+            <td>
+                <label th:text="${user.id}"></label>
+<!--                <input type="hidden" field="${userinfolist[__${st.index}__].id}">-->
+            </td>
+            <td>
+                <label th:text="${user.userNo}"></label>
+
+<!--                <input type="text" class="form-control" field="${userinfolist[__${st.index}__].userNo}">-->
+            </td>
+            <td>
+                <label th:text="${user.passWord}"></label>
+<!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].passWord}">-->
+            </td>
+            <td>
+
+                <label th:text="${user.powerFlag}"></label>
+<!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">-->
+            </td>
+            <td>
+
+                <label th:if="${user.disableFlag == '1'}">
+                    有效
+                </label>
+                <label th:if="${user.disableFlag == '0'}">
+                    无效
+                </label>
+                <!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">-->
+            </td>
+            <td>
+                <label th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></label>
+<!--                <input type="hidden" field="*{userinfolist[__${st.index}__].updateDate}">-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</div>
+</body>
+</html>
