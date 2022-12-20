@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="ユーザー情報一覧"></title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>ユーザー情報検索</h1>
+<table>
+    <tr th:if="${validationError}" th:each="error : ${validationError}">
+        <td style="color: red;" th:text="${error}"></td>
+    </tr>
+</table>
+<form th:action="@{/user/search}" th:object="${user003Request}"
+      th:method="post">
+    <div>
+        <input type="text" name="id" hidden size="40" />
+        NO：<input type="text" name="userNo" size="40" th:value="${userNo}" />
+        PS：<input type="text" name="password" size="40" th:value="${password}"/>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="検索" style="width: 100px;" />
+    </div>
+</form>
+    <br/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ユーザーNo</th>
+            <th>パスワード</th>
+            <th>権限フラグ</th>
+            <th>表示フラグ</th>
+            <th>更新日時</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <div th:if="${userinfolist != null}">
+        <tbody>
+
+        <tr th:each="user, st : ${userinfolist}" th:object="${user}" class="align-middle">
+            <td>
+                <label th:text="${user.id}"></label>
+                <input type="hidden" field="${userinfolist[__${st.index}__].id}">
+            </td>
+            <td>
+                <label th:text="${user.userNo}"></label>
+
+                <input type="hidden" class="form-control" field="${userinfolist[__${st.index}__].userNo}">
+            </td>
+            <td>
+                <label th:text="${user.passWord}"></label>
+                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].passWord}">
+            </td>
+            <td>
+
+                <label th:text="${user.powerFlag}"></label>
+                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">
+            </td>
+            <td>
+
+                <label th:if="${user.disableFlag == '1'}">
+                    有效
+                </label>
+                <label th:if="${user.disableFlag == '0'}">
+                    无效
+                </label>
+                                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">
+            </td>
+            <td>
+                <label th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></label>
+                <input type="hidden" field="*{userinfolist[__${st.index}__].updateDate}">
+            </td>
+            <td>
+<!--                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">-->
+<!--                    delete-->
+<!--                </button>-->
+                <button th:attr="onclick='location.href=\'/user/info?id=' + ${user.id} + '\''" type="button" class="btn btn-primary">
+                    詳細
+                </button>
+
+
+<!--                th:attr="onclick='location.href=\'/user/delete?id=' + ${user.id} + '\''"-->
+<!--                <input type="hidden" field="*{userinfolist[__${st.index}__].updateDate}">-->
+
+            </td>
+        </tr>
+        <div th:if="${userinfolist.size() == 0}" style="color: red">no data</div>
+        </tbody>
+
+        </div>
+
+    </table>
+</div>
+
+</div>
+</body>
+</html>
