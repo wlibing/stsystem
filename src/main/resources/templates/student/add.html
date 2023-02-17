@@ -4,7 +4,7 @@
 <head>
     <title>登録画面</title>
     <link href="/css/list.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <h1>login</h1>
@@ -16,16 +16,16 @@
 <form th:action="@{/user/add}" th:object="${user001AddRequest}"
       th:method="post">
     <div>
-        <input type="text" name="id" hidden value="12" size="40" />
-        NO：<input type="text" name="userNo" size="40" />
-        PS：<input type="text" name="passWord" size="40" />
-        PF：<input type="text" name="powerFlag" size="40" />
+        <input type="text" name="id" hidden value="12" size="40"/>
+        NO：<input type="text" name="userNo" size="40"/>
+        PS：<input type="text" name="passWord" size="40"/>
+        PF：<input type="text" name="powerFlag" size="40"/>
     </div>
-    <br />
+    <br/>
     <div>
-        <input type="submit" value="登録" style="width: 100px;" />
+        <input type="submit" value="登録" style="width: 100px;"/>
     </div>
-    <br />
+    <br/>
 </form>
 <a href="../user/search.html">search</a>
 <div th:if="${userinfo}">

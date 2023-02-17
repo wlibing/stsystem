@@ -6,48 +6,39 @@
     <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body class="text-center">
 
 <h1>Login</h1>
-<table>
-<!--    <tr th:if="${validationError}" th:each="error : ${validationError}">-->
-<!--        <td style="color: red;" th:text="${error}"></td>-->
-<!--    </tr>-->
-    <div th:if="${param.error}">
-        <td style="color: red;" >ユーザ名またはパスワードが異なります。</td>
-    </div>
-    <div th:if="${param.logout}">
-        <td style="color: red;" >ログアウトしました。</td>
-    </div>
+<div th:if="${validationError}" th:each="error : ${validationError}">
+    <p style="color: red;">ユーザ名またはパスワードが異なります。</p>
+</div>
 </table>
 <form th:action="@{/user/login}" th:object="${user002Request}"
       th:method="post" id="form">
     <label>ユーザーID</label>
-    <input type="text" id="userNo" name="userNo" size="40" /><br/>
-    <br />
+    <input type="text" id="userNo" name="userNo" size="40"/><br/>
+    <br/>
     <label>パスワード</label>
-    <input type="password" id="passWord" name="passWord" size="40" /><br/>
-    <br />
+    <input type="password" id="passWord" name="passWord" size="40"/><br/>
+    <br/>
     <input class="btn btn-primary" type="button" value="ログイン" onclick="loginClick()"></input>
 </form>
-<br />
-<a th:href="@{/signup}">新規登録はこちら1</a><br>
-<a th:href="@{/searchUser}">検索</a>
-<a th:href="@{/aaaa}">test</a>
+<br/>
+<a th:href="@{/signup}">新規登録はこちら</a><br>
 </body>
 
 <script>
-    function loginClick (){
-        let userNo= document.getElementById('userNo').value;
-        let password= document.getElementById('passWord').value;
+    function loginClick() {
+        let userNo = document.getElementById('userNo').value;
+        let password = document.getElementById('passWord').value;
 
-        if (userNo== ''){
+        if (userNo == '') {
             alert("userNoを入力してください！")
             return;
         }
-        if (password== ''){
+        if (password == '') {
             alert("passwordを入力してください！")
             return;
         }

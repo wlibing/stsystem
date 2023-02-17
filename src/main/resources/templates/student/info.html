@@ -36,7 +36,7 @@
     <br />
     <div class="text-center">
         <a th:attr="onclick='location.href=\'/user/edit?id=' + ${userData.id} + '\''" class="btn btn-primary">　編集　</a>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">-->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">
             削除
         </button>
         <!-- モーダルダイアログ -->
@@ -44,13 +44,17 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="demoModalTitle">提示！</h5>
+                        <h5 class="modal-title" id="demoModalTitle">削除しますか？</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        确定要删除此用户吗？
+                        この情報を削除します。
+                        登録されているデータも削除されます。
+                        削除した情報は元に戻せません。
+
+                        この情報を削除しますか？
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセール</button>

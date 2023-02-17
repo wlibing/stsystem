@@ -60,24 +60,13 @@ public class USER002Controller {
             BeanUtils.copyProperties(user002Request, user002InputDto);
             UserInfo userInfo = user002Service.searchUser(user002InputDto);
             if (null == userInfo) {
-                errorList.add("userNo or password is not true");
+                errorList.add("ユーザーNO:"+user002Request.getUserNo()+"が存在しない！");
                 model.addAttribute("validationError", errorList);
             } else {
+                model.addAttribute("user", userInfo);
                 return "menu/menu";
             }
         }
         return "index";
     }
-
-    /**
-     * ユーザー情報検索画面を表示
-     *
-     * @param model Model
-     * @return ユーザー情報一覧画面
-     */
-    @GetMapping(value = "/user/search")
-    public String displaySearch(Model model) {
-        return "user/add";
-    }
-
 }
