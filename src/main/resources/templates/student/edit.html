@@ -9,14 +9,14 @@
     <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
 
     <title>update</title>
-    <body>
+<body>
 <div class="container">
     <div th:if="${validationError}" th:each="error : ${validationError}">
         <label class="text-danger" th:text="${error}"></label>
     </div>
     <h1>ユーザー情報編集</h1>
     <form th:action="@{/user/update}" th:object="${USER004Request}" th:method="post">
-<!--        <input type="hidden" th:field="*{id}"/>-->
+        <!--        <input type="hidden" th:field="*{id}"/>-->
         <div th:object="${userData}">
             <div class="row mx-md-n5">
                 <div class="col-2 pt-3 border bg-light">ユーザID</div>

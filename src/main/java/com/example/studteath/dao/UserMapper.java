@@ -1,6 +1,5 @@
 package com.example.studteath.dao;
 
-import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 

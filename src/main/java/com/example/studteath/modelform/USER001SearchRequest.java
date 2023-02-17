@@ -1,7 +1,7 @@
 package com.example.studteath.modelform;
 
 import lombok.Data;
-import javax.validation.constraints.NotEmpty;
+
 import java.io.Serializable;
 
 /**

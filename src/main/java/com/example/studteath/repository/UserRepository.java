@@ -3,17 +3,13 @@ package com.example.studteath.repository;
 import com.example.studteath.dao.UserMapper;
 import com.example.studteath.dto.*;
 import com.example.studteath.entity.User;
-import lombok.Data;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.studteath.common.Constants.*;
 
 /**
  * ユーザー情報 リポジトリ

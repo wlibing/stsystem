@@ -1,12 +1,10 @@
 package com.example.studteath.controller;
 
-import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.dto.USER002InputDto;
 import com.example.studteath.dto.UserInfo;
-import com.example.studteath.entity.User;
-import com.example.studteath.modelform.*;
+import com.example.studteath.modelform.USER002LoginResponse;
+import com.example.studteath.modelform.USER002Request;
 import com.example.studteath.service.USER002Service;
-import com.example.studteath.util.Converter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import static com.example.studteath.common.Constants.RESULT_CODE_FAILD;
 
@@ -60,24 +60,13 @@ public class USER002Controller {
             BeanUtils.copyProperties(user002Request, user002InputDto);
             UserInfo userInfo = user002Service.searchUser(user002InputDto);
             if (null == userInfo) {
-                errorList.add("userNo or password is not true");
+                errorList.add("ユーザーNO:"+user002Request.getUserNo()+"が存在しない！");
                 model.addAttribute("validationError", errorList);
             } else {
+                model.addAttribute("user", userInfo);
                 return "menu/menu";
             }
         }
         return "index";
     }
-
-    /**
-     * ユーザー情報検索画面を表示
-     *
-     * @param model Model
-     * @return ユーザー情報一覧画面
-     */
-    @GetMapping(value = "/user/search")
-    public String displaySearch(Model model) {
-        return "user/add";
-    }
-
 }

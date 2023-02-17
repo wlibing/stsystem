@@ -16,14 +16,14 @@
         <h1>ユーザー登録画面</h1>
     </div>
     <form th:method="post" th:action="@{/signup}">
-        <input type="hidden"name="id" value="12345678">
+        <input type="hidden" name="id" value="12345678">
         <table class="table table-bordered table-hover">
             <!-- ユーザーNo -->
             <tr>
                 <th class="active col-sm-3">ユーザNo</th>
                 <td>
                     <div class="form-group">
-                        <input type="text" name="userNo" class="form-control" />
+                        <input type="text" name="userNo" class="form-control"/>
                     </div>
                 </td>
             </tr>
@@ -32,7 +32,7 @@
                 <th class="active">パスワード</th>
                 <td>
                     <div class="form-group">
-                        <input type="text" name="passWord" class="form-control" />
+                        <input type="text" name="passWord" class="form-control"/>
                     </div>
                 </td>
             </tr>
@@ -51,9 +51,9 @@
                 </td>
             </tr>
         </table>
-            <tr th:if="${errorList}" th:each="error : ${errorList}">
-                <td style="color: red;" th:text="${error}"></td>
-            </tr>
+        <tr th:if="${errorList}" th:each="error : ${errorList}">
+            <td style="color: red;" th:text="${error}"></td>
+        </tr>
         <button class="btn btn-primary" type="submit">ユーザー登録</button>
     </form>
 </div>
