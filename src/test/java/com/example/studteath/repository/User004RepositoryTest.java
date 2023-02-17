@@ -5,14 +5,11 @@ import com.example.studteath.dto.USER003InputDto;
 import com.example.studteath.dto.USER004InputDto;
 import com.example.studteath.dto.UserInfo;
 import com.example.studteath.entity.User;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
 

@@ -1,18 +1,14 @@
 package com.example.studteath.repository;
 
 import com.example.studteath.dao.UserMapper;
-import com.example.studteath.dto.USER002InputDto;
 import com.example.studteath.dto.USER003InputDto;
 import com.example.studteath.dto.USER004InputDto;
 import com.example.studteath.dto.UserInfo;
 import com.example.studteath.entity.User;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-import static com.example.studteath.common.Constants.DISABLE_FLAG_1;
 
 /**
  * ユーザー更新 リポジトリ

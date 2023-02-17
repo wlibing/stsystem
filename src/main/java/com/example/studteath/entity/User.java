@@ -1,9 +1,9 @@
 package com.example.studteath.entity;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.util.Date;
-
-import lombok.Data;
 
 
 /**

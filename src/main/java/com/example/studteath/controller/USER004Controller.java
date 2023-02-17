@@ -2,16 +2,12 @@ package com.example.studteath.controller;
 
 
 import com.example.studteath.dto.*;
-import com.example.studteath.modelform.USER003Request;
-import com.example.studteath.modelform.USER003Response;
 import com.example.studteath.modelform.USER004Request;
 import com.example.studteath.modelform.USER004Response;
-import com.example.studteath.service.USER002Service;
 import com.example.studteath.service.USER003Service;
 import com.example.studteath.service.USER004Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;

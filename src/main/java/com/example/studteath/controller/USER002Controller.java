@@ -1,12 +1,10 @@
 package com.example.studteath.controller;
 
-import com.example.studteath.dto.USER001InputDto;
 import com.example.studteath.dto.USER002InputDto;
 import com.example.studteath.dto.UserInfo;
-import com.example.studteath.entity.User;
-import com.example.studteath.modelform.*;
+import com.example.studteath.modelform.USER002LoginResponse;
+import com.example.studteath.modelform.USER002Request;
 import com.example.studteath.service.USER002Service;
-import com.example.studteath.util.Converter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import static com.example.studteath.common.Constants.RESULT_CODE_FAILD;
 

@@ -1,10 +1,12 @@
 package com.example.studteath.util;
+
 import com.google.zxing.common.BitMatrix;
+
 import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.OutputStream;
-import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 public class QRUtil {
     private static final int BLACK = 0xFF000000;
     private static final int WHITE = 0xFFFFFFFF;

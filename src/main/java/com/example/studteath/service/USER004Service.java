@@ -1,13 +1,13 @@
 package com.example.studteath.service;
 
-import com.example.studteath.dto.*;
+import com.example.studteath.dto.USER004InputDto;
+import com.example.studteath.dto.USER004OutputDto;
+import com.example.studteath.dto.UserInfo;
 import com.example.studteath.repository.User004Repository;
-import com.example.studteath.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * ユーザー更新 Service
