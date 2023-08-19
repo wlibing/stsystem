@@ -54,6 +54,7 @@
         <tr th:if="${errorList}" th:each="error : ${errorList}">
             <td style="color: red;" th:text="${error}"></td>
         </tr>
+        <a th:href="@{/}" class="btn btn-secondary">戻る</a>
         <button class="btn btn-primary" type="submit">ユーザー登録</button>
     </form>
 </div>

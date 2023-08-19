@@ -45,21 +45,17 @@
         <tr th:each="user, st : ${userinfolist}" class="align-middle">
             <td>
                 <label th:text="${user.id}"></label>
-                <!--                <input type="hidden" field="${userinfolist[__${st.index}__].id}">-->
             </td>
             <td>
                 <label th:text="${user.userNo}"></label>
 
-                <!--                <input type="text" class="form-control" field="${userinfolist[__${st.index}__].userNo}">-->
             </td>
             <td>
                 <label th:text="${user.passWord}"></label>
-                <!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].passWord}">-->
             </td>
             <td>
 
                 <label th:text="${user.powerFlag}"></label>
-                <!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">-->
             </td>
             <td>
 
@@ -69,11 +65,9 @@
                 <label th:if="${user.disableFlag == '0'}">
                     无效
                 </label>
-                <!--                <input type="text" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">-->
             </td>
             <td>
                 <label th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></label>
-                <!--                <input type="hidden" field="*{userinfolist[__${st.index}__].updateDate}">-->
             </td>
         </tr>
         </tbody>

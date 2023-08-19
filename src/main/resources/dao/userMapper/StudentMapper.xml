@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studteath.dao.StudentMapper">
+    <select id="searchStudent" parameterType="com.example.studteath.entity.Student" resultType="com.example.studteath.entity.Student">
+        SELECT * FROM student
+        <if test="id != null or userNo != null">
+            WHERE
+        </if>
+        <if test="id != null">
+            id = #{id}
+        </if>
+        <if test="userNo != null">
+            AND userNo = #{userNo}
+        </if>
+        <if test="staffId != null">
+            AND staffId = #{staffId}
+        </if>
+        <if test="tel != null">
+            AND tel = #{tel}
+        </if>
+        <if test="maileAddress != null">
+            AND maileAddress = #{maileAddress}
+        </if>
+        <if test="guardianTel != null">
+            AND guardianTel = #{guardianTel}
+        </if>
+        <if test="guardianMaileAddress != null">
+            AND guardianMaileAddress = #{guardianMaileAddress}
+        </if>
+        <if test="guardianName != null">
+            AND guardianName = #{guardianName}
+        </if>
+        order by update_date
+
+    </select>
+    <select id="searchStudentList" parameterType="com.example.studteath.entity.Student" resultType="com.example.studteath.entity.Student">
+        SELECT * FROM student
+        <if test="disableFlag != null or id != null">
+            WHERE
+        </if>
+        <if test="disableFlag != null">
+            disable_flag = #{disableFlag}
+        </if>
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+
+        order by update_date
+
+    </select>
+    <select id="searchsearchByStudentId" resultType="com.example.studteath.entity.Student">
+        SELECT * FROM student WHERE id= #{id}
+    </select>
+    <update id="updateStudents" parameterType="com.example.studteath.entity.Student" >
+        update student
+        set
+        <if test="userId != null">
+            user_id =#{userId},
+        </if>
+        <if test="staffId != null">
+            staff_id =#{staffId},
+        </if>
+        <if test="tel != null">
+            tel =#{tel},
+        </if>
+        <if test="maileAddress != null">
+            maile_Address =#{maileAddress},
+        </if>
+        <if test="guardianTel != null">
+            guardian_tel =#{guardianTel},
+        </if>
+        <if test="guardianMaileAddress != null">
+            guardian_maile_address =#{guardianMaileAddress},
+        </if>
+        <if test="guardianName != null">
+            guardian_name =#{guardianName},
+        </if>
+        <if test="name != null">
+            name =#{name},
+        </if>
+        <if test="age != null">
+            age =#{age},
+        </if>
+        <if test="sex != null">
+            sex =#{sex},
+        </if>
+        <if test="grade != null">
+            grade =#{grade},
+        </if>
+        <if test="studentClass != null">
+            student_class =#{studentClass},
+        </if>
+        <if test="disableFlag != null">
+            disable_flag =#{disableFlag},
+        </if>
+        <if test="updateDate != null">
+            update_date =#{updateDate}
+        </if>
+        <if test="id != null">
+            where id =#{id}
+        </if>
+    </update>
+    <update id="delete" parameterType="Integer" >
+        update student set disable_flag='0' where id=#{id}
+    </update>
+</mapper>

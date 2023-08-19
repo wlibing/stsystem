@@ -2,26 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="ユーザー情報一覧"></title>
+    <title th:text="学生情報一覧"></title>
     <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>ユーザー情報検索</h1>
+<h1>学生情報検索</h1>
 <table>
     <tr th:if="${validationError}" th:each="error : ${validationError}">
         <td style="color: red;" th:text="${error}"></td>
     </tr>
 </table>
-<form th:action="@{/user/search}" th:object="${user003Request}"
+<form th:action="@{/student/search}" th:object="${student003Request}"
       th:method="post" class="form-inline my-2 my-lg-0">
     <div>
         <div>
-            <input type="text" name="id" hidden size="40"/>
-            ユーザーNo：<input type="text" name="userNo" class="form-control mr-sm-2" th:value="${userNo}" placeholder="ユーザーNo"/>
-            パスワード：<input type="text" name="password" class="form-control mr-sm-2" th:value="${password}" placeholder="パスワード"/>
+            <input type="text" name="name" hidden size="40"/>
+            学生名前：<input type="text" name="name" class="form-control mr-sm-2" th:value="${name}" placeholder="学生名前"/>
             <input type="submit" value="検索" class="btn btn-outline-success my-2 my-sm-0"/>
         </div>
     </div>
@@ -31,58 +30,98 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>ユーザーNo</th>
-        <th>パスワード</th>
-        <th>権限フラグ</th>
-        <th>表示フラグ</th>
-        <th>更新日時</th>
+<!--        <th>ユーザーNo</th>-->
+<!--        <th>従業員ID</th>-->
+        <th>名前</th>
+        <th>年齢</th>
+        <th>性別</th>
+<!--        <th>電話番号</th>-->
+<!--        <th>メールアドレス</th>-->
+        <th>グレード</th>
+        <th>クラス</th>
+<!--        <th>保護者電話番号</th>-->
+<!--        <th>保護者メールアドレス</th>-->
+<!--        <th>保護者名前</th>-->
         <th>Edit</th>
     </tr>
     </thead>
-    <div th:if="${userinfolist != null}">
+    <div th:if="${studentinfolist != null}">
         <tbody>
 
-        <tr th:each="user, st : ${userinfolist}" th:object="${user}" class="align-middle">
+        <tr th:each="student, st : ${studentinfolist}" th:object="${student}" class="align-middle">
             <td>
-                <label th:text="${user.id}"></label>
-                <input type="hidden" field="${userinfolist[__${st.index}__].id}">
+                <label th:text="${student.id}"></label>
+                <input type="hidden" field="${studentinfolist[__${st.index}__].id}">
             </td>
-            <td>
-                <label th:text="${user.userNo}"></label>
+<!--            <td>-->
+<!--                <label th:text="${student.userId}"></label>-->
 
-                <input type="hidden" class="form-control" field="${userinfolist[__${st.index}__].userNo}">
-            </td>
-            <td>
-                <label th:text="${user.passWord}"></label>
-                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].passWord}">
-            </td>
-            <td>
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].userId}">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <label th:text="${student.staffId}"></label>-->
 
-                <label th:text="${user.powerFlag}"></label>
-                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">
-            </td>
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].staffId}">-->
+<!--            </td>-->
             <td>
+                <label th:text="${student.name}"></label>
 
-                <label th:if="${user.disableFlag == '1'}">
-                    有效
-                </label>
-                <label th:if="${user.disableFlag == '0'}">
-                    无效
-                </label>
-                <input type="hidden" class="form-control" field="*{userinfolist[__${st.index}__].powerFlag}">
+                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].name}">
             </td>
             <td>
-                <label th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></label>
-                <input type="hidden" field="*{userinfolist[__${st.index}__].updateDate}">
+                <label th:text="${student.age}"></label>
+
+                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].age}">
             </td>
             <td>
-                <button th:attr="onclick='location.href=\'/user/info?id=' + ${user.id} + '\''" type="button"
+                <label th:text="${student.sex}"></label>
+
+                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].sex}">
+            </td>
+<!--            <td>-->
+<!--                <label th:text="${student.tel}"></label>-->
+
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].tel}">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <label th:text="${student.maileAddress}"></label>-->
+
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].maileAddress}">-->
+<!--            </td>-->
+            <td>
+                <label th:text="${student.grade}"></label>
+
+                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].grade}">
+            </td>
+            <td>
+                <label th:text="${student.studentClass}"></label>
+
+                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].studentClass}">
+            </td>
+<!--            <td>-->
+<!--                <label th:text="${student.guardianTel}"></label>-->
+
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].guardianTel}">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <label th:text="${student.guardianMaileAddress}"></label>-->
+
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].guardianMaileAddress}">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <label th:text="${student.guardianName}"></label>-->
+
+<!--                <input type="hidden" class="form-control" field="${studentinfolist[__${st.index}__].guardianName}">-->
+<!--            </td>-->
+
+            <td>
+                <button th:attr="onclick='location.href=\'/student/info?id=' + ${student.id} + '\''" type="button"
                         class="btn btn-primary">
                     詳細
                 </button>
             </td>
         </tr>
-        <div th:if="${userinfolist.size() == 0}" style="color: red">no data</div>
+        <div th:if="${studentinfolist.size() == 0}" style="color: red">no data</div>
         </tbody>
 
     </div>
