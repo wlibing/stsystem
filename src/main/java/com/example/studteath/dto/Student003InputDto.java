@@ -4,9 +4,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Student003InputDto extends InputBaseDto {
-    /**
-     * 学生ID
-     */
-    private String id;
 
+    /**
+     * 学生name
+     */
+    private String name;
 }

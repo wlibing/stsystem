@@ -19,7 +19,7 @@
       th:method="post" class="form-inline my-2 my-lg-0">
     <div>
         <div>
-            <input type="text" name="name" hidden size="40"/>
+            学生ID：<input type="text" name="id" class="form-control mr-sm-2" th:value="${id}" placeholder="学生ID"/>
             学生名前：<input type="text" name="name" class="form-control mr-sm-2" th:value="${name}" placeholder="学生名前"/>
             <input type="submit" value="検索" class="btn btn-outline-success my-2 my-sm-0"/>
         </div>

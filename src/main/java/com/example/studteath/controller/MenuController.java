@@ -78,7 +78,7 @@ public class MenuController {
     }
     @RequestMapping("/searchStudent")
     public String searchTeacher(Model model) {
-        Student003OutputDto out = student003Service.searAllchStudent(new Student003InputDto());
+        Student003OutputDto out = student003Service.searchchStudent(new Student003InputDto());
         model.addAttribute("studentinfolist", out.getStudentInfoList());
         return "student/search";
     }
@@ -106,7 +106,7 @@ public class MenuController {
         Student003InputDto inputDto = new Student003InputDto();
         inputDto.setId(id);
         //学生サービスを呼び出し
-        Student003OutputDto student003OutputDto = StudentServiceEdit.searAllchStudent(inputDto);
+        Student003OutputDto student003OutputDto = StudentServiceEdit.searchchStudent(inputDto);
         List<StudentInfo> studentInfoListOut = student003OutputDto.getStudentInfoList();
         StudentInfo studentInfo = studentInfoListOut.get(0);
         BeanUtils.copyProperties(studentInfo, from);

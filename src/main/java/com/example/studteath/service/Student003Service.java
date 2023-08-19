@@ -21,7 +21,7 @@ private StudentRepository studentRepository;
      *
      * @return 検索結果
      */
-    public Student003OutputDto searAllchStudent(Student003InputDto inputDto){
+    public Student003OutputDto searchchStudent(Student003InputDto inputDto){
         Student003OutputDto outputDto = new Student003OutputDto();
         List<StudentInfo> studentInfoList = studentRepository.searchAllStudent(inputDto);
         outputDto.setStudentInfoList(studentInfoList);
