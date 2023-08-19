@@ -5,6 +5,7 @@ import com.example.studteath.dto.*;
 import com.example.studteath.entity.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * ユーザー情報 リポジトリ
  */
-@Service
+@Repository
 public class UserRepository {
     /**
      * ユーザー情報 Mapper
@@ -32,6 +33,7 @@ public class UserRepository {
         User userSearch = new User();
         String id = inputDto.getId();
         String userNo = inputDto.getUserNo();
+        String passWord = inputDto.getPassWord();
         Long uesrId = null;
         if (id != "" && id != null){
             uesrId = Long.parseLong(id);
@@ -39,6 +41,9 @@ public class UserRepository {
         }
         if (userNo!="" && userNo != null){
             userSearch.setUserNo(userNo);
+        }
+        if (passWord!="" && passWord != null){
+            userSearch.setPassWord(passWord);
         }
         userSearch.setDisableFlag("1");
         List<User> users = userMapper.searchUserList(userSearch);

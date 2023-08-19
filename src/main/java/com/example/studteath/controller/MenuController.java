@@ -1,9 +1,10 @@
 package com.example.studteath.controller;
 
-import com.example.studteath.dto.USER003InputDto;
-import com.example.studteath.dto.USER003OutputDto;
-import com.example.studteath.dto.UserInfo;
+import com.example.studteath.dto.*;
+import com.example.studteath.entity.Student;
+import com.example.studteath.modelform.Student004Response;
 import com.example.studteath.modelform.USER004Response;
+import com.example.studteath.service.Student003Service;
 import com.example.studteath.service.USER003Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class MenuController {
      */
     @Autowired
     USER003Service service;
+    @Autowired
+    Student003Service student003Service;
+
 
     /**
      * ユーザー情報検索 Service
@@ -33,6 +37,8 @@ public class MenuController {
     @Autowired
     USER003Service serviceEdit;
 
+    @Autowired
+    Student003Service StudentServiceEdit;
     //ラジオボタン初期化
     private Map<String, String> initRadioMarrige() {
 
@@ -70,7 +76,12 @@ public class MenuController {
         model.addAttribute("userinfolist", out.getUserInfoList());
         return "user/search";
     }
-
+    @RequestMapping("/searchStudent")
+    public String searchTeacher(Model model) {
+        Student003OutputDto out = student003Service.searAllchStudent(new Student003InputDto());
+        model.addAttribute("studentinfolist", out.getStudentInfoList());
+        return "student/search";
+    }
     @GetMapping("/user/info")
     public String userInfo(String id,Model model) {
         USER004Response from = new USER004Response();
@@ -86,5 +97,21 @@ public class MenuController {
         from.setId(userInfo.getId().toString());
         model.addAttribute("userData", from);
         return "user/info";
+    }
+    @GetMapping("/student/info")
+    public String studentInfo(String id,Model model) {
+        Student004Response from = new Student004Response();
+
+        // 学生サービス入力dtoを定義
+        Student003InputDto inputDto = new Student003InputDto();
+        inputDto.setId(id);
+        //学生サービスを呼び出し
+        Student003OutputDto student003OutputDto = StudentServiceEdit.searAllchStudent(inputDto);
+        List<StudentInfo> studentInfoListOut = student003OutputDto.getStudentInfoList();
+        StudentInfo studentInfo = studentInfoListOut.get(0);
+        BeanUtils.copyProperties(studentInfo, from);
+        from.setId(studentInfo.getId());
+        model.addAttribute("studentData", from);
+        return "student/info";
     }
 }

@@ -14,39 +14,99 @@
     <div th:if="${validationError}" th:each="error : ${validationError}">
         <label class="text-danger" th:text="${error}"></label>
     </div>
-    <h1>ユーザー情報編集</h1>
-    <form th:action="@{/user/update}" th:object="${USER004Request}" th:method="post">
+    <h1>学生情報編集</h1>
+    <form th:action="@{/student/update}" th:object="${Student004Request}" th:method="post">
         <!--        <input type="hidden" th:field="*{id}"/>-->
-        <div th:object="${userData}">
+        <div th:object="${studentData}">
             <div class="row mx-md-n5">
-                <div class="col-2 pt-3 border bg-light">ユーザID</div>
+                <div class="col-2 pt-3 border bg-light">学生ID</div>
                 <div class="col pt-3 border">
                     <input type="text" class="form-control" th:readonly="${true}" th:field="*{id}">
                 </div>
             </div>
             <div class="row mx-md-n5">
-                <div class="col-2 pt-3 border bg-light">ユーザNO<span class="text-danger">※</span></div>
+                <div class="col-2 pt-3 border bg-light">ユーザID<span class="text-danger">※</span></div>
                 <div class="col py-2 border">
-                    <input type="text" class="form-control" th:field="${userData.userNo}">
+                    <input type="text" class="form-control" th:readonly="${true}"th:field="${studentData.userId}">
                 </div>
             </div>
             <div class="row mx-md-n5">
-                <div class="col-2 pt-3 border bg-light">権限フラグ</div>
+                <div class="col-2 pt-3 border bg-light">従業員ID</div>
                 <div class="col py-2 border">
-                    <input type="text" class="form-control" th:field="${userData.powerFlag}">
+                    <input type="text" class="form-control" th:readonly="${true}"th:field="${studentData.staffId}">
                 </div>
             </div>
             <div class="row mx-md-n5">
-                <div class="col-2 pt-3 border bg-light">パスワード<span class="text-danger">※</span></div>
+                <div class="col-2 pt-3 border bg-light">名前</div>
                 <div class="col py-2 border">
-                    <input type="text" class="form-control" th:field="${userData.passWord}">
+                    <input type="text" class="form-control" th:field="${studentData.name}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">年齢</div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.age}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">性別</div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.sex}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">電話番号<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.tel}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">メールアドレス<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.maileAddress}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">グレード<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.grade}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">クラス<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.studentClass}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">保護者電話番号<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.guardianTel}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">保護者メールアドレス<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.guardianMaileAddress}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">保護者名前<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.guardianName}">
+                </div>
+            </div>
+            <div class="row mx-md-n5">
+                <div class="col-2 pt-3 border bg-light">有効フラグ<span class="text-danger">※</span></div>
+                <div class="col py-2 border">
+                    <input type="text" class="form-control" th:field="${studentData.disableFlag}">
                 </div>
             </div>
         </div>
         <br/>
         <div class="text-center">
             <input type="submit" class="btn btn-primary" value="　保存　">
-            <a th:attr="onclick='location.href=\'/user/info?id=' + ${userData.id} + '\''" class="btn btn-secondary">キャンセル</a>
+            <a th:attr="onclick='location.href=\'/student/info?id=' + ${studentData.id} + '\''" class="btn btn-secondary">キャンセル</a>
         </div>
 
     </form>

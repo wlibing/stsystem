@@ -12,30 +12,99 @@
 </head>
 <body>
 <div class="container">
-    <h1>ユーザー情報詳細</h1>
-    <div th:object="${userData}">
+    <h1>学生情報詳細</h1>
+    <div th:object="${studentData}">
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">ユーザNO</div>
+            <div class="col-2 pt-3 border bg-light">学生ID</div>
             <div class="col pt-3 border">
-                <p th:text="*{userNo}"></p>
+                <p th:text="*{id}"></p>
             </div>
         </div>
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">権限フラグ</div>
+            <div class="col-2 pt-3 border bg-light">ユーザーID</div>
             <div class="col pt-3 border">
-                <p th:text="*{powerFlag}"></p>
+                <p th:text="*{userId}"></p>
             </div>
         </div>
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">パスワード</div>
+            <div class="col-2 pt-3 border bg-light">従業員ID</div>
             <div class="col pt-3 border">
-                <p th:text="*{passWord}"></p>
+                <p th:text="*{staffId}"></p>
             </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">名前</div>
+            <div class="col pt-3 border">
+                <p th:text="*{name}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">年齢</div>
+            <div class="col pt-3 border">
+                <p th:text="*{age}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">性別</div>
+            <div class="col pt-3 border">
+                <p th:text="*{sex}"></p>
+            </div>
+        </div>
+
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">電話番号</div>
+            <div class="col pt-3 border">
+                <p th:text="*{tel}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">メールアドレス</div>
+            <div class="col pt-3 border">
+                <p th:text="*{maileAddress}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">グレード</div>
+            <div class="col pt-3 border">
+                <p th:text="*{grade}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">クラス</div>
+            <div class="col pt-3 border">
+                <p th:text="*{studentClass}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">保護者電話番号</div>
+            <div class="col pt-3 border">
+                <p th:text="*{guardianTel}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">保護者メールアドレス</div>
+            <div class="col pt-3 border">
+                <p th:text="*{guardianMaileAddress}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">保護者名前</div>
+            <div class="col pt-3 border">
+                <p th:text="*{guardianName}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">有効フラグ</div>
+            <div class="col pt-3 border">
+                <p th:text="*{disableFlag}"></p>
+            </div>
+        </div>
+
         </div>
     </div>
     <br />
     <div class="text-center">
-        <a th:attr="onclick='location.href=\'/user/edit?id=' + ${userData.id} + '\''" class="btn btn-primary">　編集　</a>
+        <a th:attr="onclick='location.href=\'/student/edit?id=' + ${studentData.id} + '\''" class="btn btn-primary">　編集　</a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">
             削除
         </button>
@@ -58,12 +127,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセール</button>
-                        <button th:attr="onclick='location.href=\'/user/delete?id=' + ${userData.id} + '\''" type="button" class="btn btn-primary">OK</button>
+                        <button th:attr="onclick='location.href=\'/student/delete?id=' + ${studentData.id} + '\''" type="button" class="btn btn-primary">OK</button>
                     </div>
                 </div>
             </div>
         </div>
-        <a th:href="@{/searchUser}" class="btn btn-secondary">一覧に戻る</a>
+        <a th:href="@{/searchStudent}" class="btn btn-secondary">一覧に戻る</a>
     </div>
 </div>
 </body>

@@ -56,7 +56,7 @@ guardian_name VARCHAR(24) COLLATE utf8_estonian_ci NOT NULL COMMENT '保護者�
 guardian_tel CHAR(13) COLLATE utf8_estonian_ci NOT NULL COMMENT '保護者電話番号',
 guardian_maile_address CHAR(50) COLLATE utf8_estonian_ci NOT NULL COMMENT '保護者メールアドレス',
 grade VARCHAR(2) COLLATE utf8_estonian_ci NOT NULL COMMENT 'グレード',
-class VARCHAR(2) COLLATE utf8_estonian_ci NOT NULL COMMENT 'クラス',
+student_class VARCHAR(2) COLLATE utf8_estonian_ci NOT NULL COMMENT 'クラス',
 disable_flag CHAR(1) COLLATE utf8_estonian_ci NOT NULL COMMENT '有効フラグ',
 update_date DATETIME COLLATE utf8_estonian_ci NOT NULL COMMENT '更新時間',
 update_user BIGINT(10) COLLATE utf8_estonian_ci NOT NULL COMMENT '更新者',
@@ -65,6 +65,8 @@ create_user BIGINT(10) COLLATE utf8_estonian_ci NOT NULL COMMENT '作成者',
 delete_date DATETIME COLLATE utf8_estonian_ci DEFAULT NULL COMMENT '削除時間',
 delete_user BIGINT(10) COLLATE utf8_estonian_ci DEFAULT NULL COMMENT '削除者',
 PRIMARY KEY (id));
+
+ALTER TABLE studteath.student RENAME COLUMN class TO student_class;
 
 INSERT INTO `studteath`.`student` (`user_id`, `staff_id`, `name`, `age`, `sex`, `tel`, `maile_address`, `guardian_name`, `guardian_tel`, `guardian_maile_address`, `grade`, `class`, `disable_flag`, `update_date`, `update_user`, `create_date`, `create_user`) VALUES ('2', '1', 'testname', '12', '1', '000-0000-0000', 'lining@gmail.com', 'testguname', '000-8890-0000', 'juidn89@gmail.com', '8', '1', '1', '2019-05-06 12:00:00', '1', '2019-05-06 12:00:00', '1');
 #studteath.score
