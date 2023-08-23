@@ -43,10 +43,16 @@ public class Student003Controller {
         Student003InputDto inputDto = new Student003InputDto();
         BeanUtils.copyProperties(student003Request, inputDto);
         //ユーザーサービスを呼び出し
-        Student003OutputDto student003OutputDto = student003Service.searAllchStudent(inputDto);
+        Student003OutputDto student003OutputDto = student003Service.searchchStudent(inputDto);
         List<StudentInfo> studentInfoListOut = student003OutputDto.getStudentInfoList();
         from.setStudentInfoList(studentInfoListOut);
         model.addAttribute("studentinfolist", from.getStudentInfoList());
+        if (student003Request.getId() != "") {
+            model.addAttribute("id", student003Request.getId());
+        }
+        if (student003Request.getName() != "") {
+            model.addAttribute("name", student003Request.getName());
+        }
         return "student/search";
     }
 }

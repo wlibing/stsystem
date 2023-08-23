@@ -31,10 +31,13 @@ public List<StudentInfo> searchAllStudent(Student003InputDto student003InputDto)
     List<StudentInfo> studentInfoList=new ArrayList<>();
     Student studentSearch = new Student();
     String id = student003InputDto.getId();
+    String name = student003InputDto.getName();
     Long studentId = null;
     if (id != "" && id != null){
         studentId = Long.parseLong(id);
         studentSearch.setId(studentId);
+    } if (name != "" && name != null){
+        studentSearch.setName(name);
     }
 
     studentSearch.setDisableFlag("1");

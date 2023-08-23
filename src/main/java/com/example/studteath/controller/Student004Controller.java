@@ -133,7 +133,7 @@ public class Student004Controller {
        Student003InputDto inputDto = new Student003InputDto();
         inputDto.setId(id);
         //ユーザーサービスを呼び出し
-        Student003OutputDto student003OutputDto = serviceEdit.searAllchStudent(inputDto);
+        Student003OutputDto student003OutputDto = serviceEdit.searchchStudent(inputDto);
         List<StudentInfo> studentInfoListOut = student003OutputDto.getStudentInfoList();
         StudentInfo studentInfo = studentInfoListOut.get(0);
         BeanUtils.copyProperties(studentInfo, from);
