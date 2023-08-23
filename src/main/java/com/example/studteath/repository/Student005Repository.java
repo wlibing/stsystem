@@ -45,36 +45,6 @@ public class Student005Repository {
         }
         return studentInfoList;
     }
-//
-//    /**
-//     * ユーザー一覧情報検索
-//     *
-//     * @return 検索結果
-//     */
-//    public USER001OutputDto  addUser(USER001InputDto inputDto) {
-//        USER001OutputDto outputDto=new USER001OutputDto();
-//        User u=new User();
-//        BeanUtils.copyProperties(inputDto,u);
-//        u.setDisableFlag("1");
-//        LocalDateTime nowDateTime = LocalDateTime.now();
-//        u.setCreateDate(nowDateTime);
-//        u.setUpdateDate(nowDateTime);
-//        u.setCreateUser(Long.parseLong(inputDto.getId()));
-//        u.setUpdateUser(Long.parseLong(inputDto.getId()));
-//        Integer addNum=userMapper.add(u);
-//
-//        List<User> users = userMapper.searchUserList(new User());
-//        List<UserInfo> userInfoList=new ArrayList<>();
-//        if (users.size()>0){
-//            for (User user: users){
-//                UserInfo userInfo = new UserInfo();
-//                BeanUtils.copyProperties(user, userInfo);
-//                userInfoList.add(userInfo);
-//            }
-//        }
-//        outputDto.setUserInfoList(userInfoList);
-//        return outputDto;
-//    }
 
     /**
      * 学生削除

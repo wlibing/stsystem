@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.studteath.dao.StudentMapper">
     <select id="searchStudent" parameterType="com.example.studteath.entity.Student" resultType="com.example.studteath.entity.Student">
-        SELECT * FROM student
+        SELECT id,user_id,staff_id,name,age,sex,tel,maile_address,guardian_name,guardian_tel,guardian_maile_address,grade,student_class,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM student
         <if test="id != null or userNo != null">
             WHERE
         </if>
@@ -36,7 +36,7 @@
 
     </select>
     <select id="searchStudentList" parameterType="com.example.studteath.entity.Student" resultType="com.example.studteath.entity.Student">
-        SELECT * FROM student
+        SELECT id,user_id,staff_id,name,age,sex,tel,maile_address,guardian_name,guardian_tel,guardian_maile_address,grade,student_class,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM student
         <if test="disableFlag != null or id != null or name != null">
             WHERE
         </if>
@@ -53,7 +53,7 @@
 
     </select>
     <select id="searchsearchByStudentId" resultType="com.example.studteath.entity.Student">
-        SELECT * FROM student WHERE id= #{id}
+        SELECT id,user_id,staff_id,name,age,sex,tel,maile_address,guardian_name,guardian_tel,guardian_maile_address,grade,student_class,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM student WHERE id= #{id}
     </select>
     <update id="updateStudents" parameterType="com.example.studteath.entity.Student" >
         update student
