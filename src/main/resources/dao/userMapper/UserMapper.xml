@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.studteath.dao.UserMapper">
     <select id="searchUser" parameterType="com.example.studteath.entity.User" resultType="com.example.studteath.entity.User">
-        SELECT * FROM user
+        SELECT id,user_no,password,power_flag,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM user
         <if test="disableFlag != null or id != null or userNo != null">
             WHERE
         </if>
@@ -24,7 +24,7 @@
 
     </select>
     <select id="searchUserList" parameterType="com.example.studteath.entity.User" resultType="com.example.studteath.entity.User">
-        SELECT * FROM user
+        SELECT id,user_no,password,power_flag,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM user
         <if test="disableFlag != null or id != null or userNo != null">
             WHERE
         </if>
@@ -44,7 +44,7 @@
 
     </select>
     <select id="searchsearchByUserNo" resultType="com.example.studteath.entity.User">
-        SELECT * FROM user WHERE user_no = #{user_no}
+        SELECT id,user_no,password,power_flag,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM user WHERE user_no = #{user_no}
     </select>
     <insert id="add" parameterType="com.example.studteath.entity.User">
         insert into user(
@@ -85,7 +85,5 @@
         <if test="userNo != null or passWord != null or powerFlag != null">
             where id =#{id}
         </if>
-
-
     </update>
 </mapper>

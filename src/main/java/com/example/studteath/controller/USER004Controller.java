@@ -47,25 +47,9 @@ public class USER004Controller {
     public String update(@Validated @ModelAttribute USER004Request user004Request, Model model) {
         USER004Response user004Response = new USER004Response();
         USER004InputDto inputDto = new USER004InputDto();
-        String userId = user004Request.getId();
-        String powerFlag = user004Request.getPowerFlag();
-        String passWord = user004Request.getPassWord();
-        inputDto.setId(userId);
-        inputDto.setPassWord(passWord);
-        inputDto.setPowerFlag(powerFlag);
+        BeanUtils.copyProperties(user004Request, inputDto);
         USER004OutputDto outputDto = service.updateUser(inputDto);
-        String userNo = outputDto.getUserNo();
-        Long id = outputDto.getId();
-        String powerFlag1 = outputDto.getPowerFlag();
-        String passWord1 = outputDto.getPassWord();
-        Date date = outputDto.getUpdateDate();
-        String d = outputDto.getDisableFlag();
-        user004Response.setUserNo(userNo);
-        user004Response.setId(id.toString());
-        user004Response.setPowerFlag(powerFlag1);
-        user004Response.setPassWord(passWord1);
-        user004Response.setUpdateDate(date);
-        user004Response.setDisableFlag(d);
+        BeanUtils.copyProperties(outputDto, user004Response);
         model.addAttribute("userData", user004Response);
         return "/user/info";
     }

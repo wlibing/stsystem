@@ -4,6 +4,7 @@ import com.example.studteath.dto.USER004InputDto;
 import com.example.studteath.dto.USER004OutputDto;
 import com.example.studteath.dto.UserInfo;
 import com.example.studteath.repository.User004Repository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +29,8 @@ public class USER004Service {
      */
     public USER004OutputDto updateUser(USER004InputDto inputDto) {
         USER004OutputDto outputDto = new USER004OutputDto();
-         UserInfo info = user004Repository.searchUser(inputDto);
-        String userNo = info.getUserNo();
-        Long id = info.getId();
-        String passWord = info.getPassWord();
-        String powerFlag = info.getPowerFlag();
-        String disableFlag = info.getDisableFlag();
-        Date updateDate = info.getUpdateDate();
-        outputDto.setUserNo(userNo);
-        outputDto.setId(id);
-        outputDto.setPassWord(passWord);
-        outputDto.setPowerFlag(powerFlag);
-        outputDto.setDisableFlag(disableFlag);
-        outputDto.setUpdateDate(updateDate);
+        UserInfo info = user004Repository.searchUser(inputDto);
+        BeanUtils.copyProperties(info, outputDto);
         return outputDto;
     }
 
