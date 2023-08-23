@@ -31,8 +31,6 @@ public class User004Repository {
         UserInfo userInfo = new UserInfo();
         User user = new User();
         Long id = Long.parseLong(inputDto.getId());
-//        List<User> users =  userMapper.searchUserList(user);
-//        users.get(0);
         String passWord = inputDto.getPassWord();
         String powerFlag = inputDto.getPowerFlag();
         user.setId(id);
