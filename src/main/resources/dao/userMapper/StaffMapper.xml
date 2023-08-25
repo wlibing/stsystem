@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studteath.dao.StaffMapper">
+    <select id="searchStaffList" parameterType="com.example.studteath.entity.Staff" resultType="com.example.studteath.entity.Staff">
+        SELECT id,user_id,name,age,sex,tel,maile_address,shiki_flag,work_grade,work_class,disable_flag,update_date,update_user,create_date,create_user,delete_date,delete_user FROM staff
+        <if test="disableFlag != null or id != null or name != null">
+            WHERE
+        </if>
+        <if test="disableFlag != null">
+            disable_flag = #{disableFlag}
+        </if>
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+        order by update_date
+
+    </select>
+
+</mapper>

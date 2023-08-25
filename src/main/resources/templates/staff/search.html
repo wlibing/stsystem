@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="従業員情報一覧"></title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>従業員情報検索</h1>
+<table>
+    <tr th:if="${validationError}" th:each="error : ${validationError}">
+        <td style="color: red;" th:text="${error}"></td>
+    </tr>
+</table>
+<form th:action="@{/staff/search}" th:object="${staff003Request}"
+      th:method="post" class="form-inline my-2 my-lg-0">
+    <div>
+        <div>
+            従業員ID：<input type="text" name="id" class="form-control mr-sm-2" th:value="${id}" placeholder="従業員Id"/>
+            従業員名前：<input type="text" name="name" class="form-control mr-sm-2" th:value="${name}" placeholder="名前"/>
+            <input type="submit" value="検索" class="btn btn-outline-success my-2 my-sm-0"/>
+        </div>
+    </div>
+</form>
+<br/>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>従業員名前</th>
+        <th>年齢</th>
+        <th>性別</th>
+        <th>電話番号</th>
+        <th>有効フラグ</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <div th:if="${staffinfolist != null}">
+        <tbody>
+
+        <tr th:each="staff, st : ${staffinfolist}" th:object="${staff}" class="align-middle">
+            <td>
+                <label th:text="${staff.id}"></label>
+                <input type="hidden" field="${staffinfolist[__${st.index}__].id}">
+            </td>
+            <td>
+                <label th:text="${staff.name}"></label>
+
+                <input type="hidden" class="form-control" field="${staffinfolist[__${st.index}__].name}">
+            </td>
+            <td>
+                <label th:text="${staff.age}"></label>
+                <input type="hidden" class="form-control" field="*{staffinfolist[__${st.index}__].age}">
+            </td>
+            <td>
+
+                <label th:text="${staff.sex}"></label>
+                <input type="hidden" class="form-control" field="*{staffinfolist[__${st.index}__].sex}">
+            </td>
+            <td>
+
+                <label th:text="${staff.tel}"></label>
+                <input type="hidden" class="form-control" field="*{staffinfolist[__${st.index}__].tel}">
+            </td>
+            <td>
+
+                <label th:if="${staff.disableFlag == '1'}">
+                    有效
+                </label>
+                <label th:if="${staff.disableFlag == '0'}">
+                    无效
+                </label>
+                <input type="hidden" class="form-control" field="*{staffinfolist[__${st.index}__].powerFlag}">
+            </td>
+            <td>
+                <button th:attr="onclick='location.href=\'/staff/info?id=' + ${staff.id} + '\''" type="button"
+                        class="btn btn-primary">
+                    詳細
+                </button>
+            </td>
+        </tr>
+        <div th:if="${staffinfolist.size() == 0}" style="color: red">no data</div>
+        </tbody>
+
+    </div>
+
+</table>
+</div>
+
+</div>
+</body>
+</html>

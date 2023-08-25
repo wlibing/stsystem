@@ -4,6 +4,7 @@ import com.example.studteath.dto.*;
 import com.example.studteath.entity.Student;
 import com.example.studteath.modelform.Student004Response;
 import com.example.studteath.modelform.USER004Response;
+import com.example.studteath.service.Staff003Service;
 import com.example.studteath.service.Student003Service;
 import com.example.studteath.service.USER003Service;
 import org.springframework.beans.BeanUtils;
@@ -30,7 +31,8 @@ public class MenuController {
     @Autowired
     Student003Service student003Service;
 
-
+    @Autowired
+    Staff003Service staff003Service;
     /**
      * ユーザー情報検索 Service
      */
@@ -77,10 +79,16 @@ public class MenuController {
         return "user/search";
     }
     @RequestMapping("/searchStudent")
-    public String searchTeacher(Model model) {
+    public String searchStudent(Model model) {
         Student003OutputDto out = student003Service.searchchStudent(new Student003InputDto());
         model.addAttribute("studentinfolist", out.getStudentInfoList());
         return "student/search";
+    }
+    @RequestMapping("/searchStaff")
+    public String searchTeacher(Model model) {
+        Staff003OutputDto out = staff003Service.searchchStaff(new Staff003InputDto());
+        model.addAttribute("staffinfolist", out.getStaffInfoList());
+        return "staff/search";
     }
     @GetMapping("/user/info")
     public String userInfo(String id,Model model) {
