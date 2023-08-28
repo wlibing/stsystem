@@ -20,6 +20,11 @@ public interface StaffMapper {
     List<Staff> searchStaffList(Staff staff);
 
 
-
+    /**
+     *従業員情報詳細
+     *
+     * @return 従業員一覧情報
+     */
+    List<Staff> searchStaffs(Staff staff);
 
 }

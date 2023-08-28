@@ -12,30 +12,78 @@
 </head>
 <body>
 <div class="container">
-    <h1>ユーザー情報詳細</h1>
-    <div th:object="${userData}">
+    <h1>従業員情報詳細</h1>
+    <div th:object="${staffData}">
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">ユーザNO</div>
+            <div class="col-2 pt-3 border bg-light">従業員ID</div>
             <div class="col pt-3 border">
-                <p th:text="*{userNo}"></p>
+                <p th:text="*{id}"></p>
             </div>
         </div>
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">権限フラグ</div>
+            <div class="col-2 pt-3 border bg-light">ユーザーID</div>
             <div class="col pt-3 border">
-                <p th:text="*{powerFlag}"></p>
+                <p th:text="*{userId}"></p>
             </div>
         </div>
         <div class="row mx-md-n5">
-            <div class="col-2 pt-3 border bg-light">パスワード</div>
+            <div class="col-2 pt-3 border bg-light">名前</div>
             <div class="col pt-3 border">
-                <p th:text="*{passWord}"></p>
+                <p th:text="*{name}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">年齢</div>
+            <div class="col pt-3 border">
+                <p th:text="*{age}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">性別</div>
+            <div class="col pt-3 border">
+                <p th:text="*{sex}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">電話番号</div>
+            <div class="col pt-3 border">
+                <p th:text="*{tel}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">メールアドレス</div>
+            <div class="col pt-3 border">
+                <p th:text="*{maileAddress}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">職階フラグ</div>
+            <div class="col pt-3 border">
+                <p th:text="*{shikiFlag}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">担当グレード</div>
+            <div class="col pt-3 border">
+                <p th:text="*{workGrade}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">担当クラス</div>
+            <div class="col pt-3 border">
+                <p th:text="*{workClass}"></p>
+            </div>
+        </div>
+        <div class="row mx-md-n5">
+            <div class="col-2 pt-3 border bg-light">有効フラグ</div>
+            <div class="col pt-3 border">
+                <p th:text="*{disableFlag}"></p>
             </div>
         </div>
     </div>
     <br />
     <div class="text-center">
-        <a th:attr="onclick='location.href=\'/user/edit?id=' + ${userData.id} + '\''" class="btn btn-primary">　編集　</a>
+        <a th:attr="onclick='location.href=\'/staff/edit?id=' + ${staffData.id} + '\''" class="btn btn-primary">　編集　</a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoNormalModal">
             削除
         </button>
@@ -43,27 +91,26 @@
         <div class="modal fade" id="demoNormalModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="demoModalTitle">ユーザーを削除しますか？</h5>
+                    <div class="modal-header">従業員を削除しますか？</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ユーザーを削除します。
+                        従業員を削除します。
                         登録されているデータも削除されます。
-                        削除したユーザーは元に戻せません。
+                        削除した従業員は元に戻せません。
 
-                        ユーザーを削除しますか？
+                        従業員を削除しますか？
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセール</button>
-                        <button th:attr="onclick='location.href=\'/user/delete?id=' + ${userData.id} + '\''" type="button" class="btn btn-primary">OK</button>
+                        <button th:attr="onclick='location.href=\'/staff/delete?id=' + ${staffData.id} + '\''" type="button" class="btn btn-primary">OK</button>
                     </div>
                 </div>
             </div>
         </div>
-        <a th:href="@{/searchUser}" class="btn btn-secondary">一覧に戻る</a>
+        <a th:href="@{/searchStaff}" class="btn btn-secondary">一覧に戻る</a>
     </div>
 </div>
 </body>
