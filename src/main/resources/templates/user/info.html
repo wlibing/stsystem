@@ -23,7 +23,15 @@
         <div class="row mx-md-n5">
             <div class="col-2 pt-3 border bg-light">権限フラグ</div>
             <div class="col pt-3 border">
-                <p th:text="*{powerFlag}"></p>
+                <label th:if="${userData.powerFlag == '0'}">
+                    管理員
+                </label>
+                <label th:if="${userData.powerFlag == '1'}">
+                    従業員
+                </label>
+                <label th:if="${userData.powerFlag == '2'}">
+                    学生
+                </label>
             </div>
         </div>
         <div class="row mx-md-n5">
