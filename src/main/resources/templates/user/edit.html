@@ -33,7 +33,11 @@
             <div class="row mx-md-n5">
                 <div class="col-2 pt-3 border bg-light">権限フラグ</div>
                 <div class="col py-2 border">
-                    <input type="text" class="form-control" th:field="${userData.powerFlag}">
+                    <select th:field="${userData.powerFlag}">
+                        <option value="0">管理員</option>
+                        <option value="1">従業員</option>
+                        <option value="2">学生</option>
+                    </select>
                 </div>
             </div>
             <div class="row mx-md-n5">
