@@ -37,4 +37,44 @@
         order by update_date
 
     </select>
+    <update id="updateStaffs" parameterType="com.example.studteath.entity.Staff" >
+        update staff
+        set
+        <if test="userId != null">
+            user_id =#{userId},
+        </if>
+        <if test="name != null">
+            name =#{name},
+        </if>
+        <if test="sex != null">
+            sex =#{sex},
+        </if>
+        <if test="age != null">
+            age =#{age},
+        </if>
+        <if test="tel != null">
+            tel =#{tel},
+        </if>
+        <if test="maileAddress != null">
+            maile_address =#{maileAddress},
+        </if>
+        <if test="shikiFlag != null">
+            shiki_flag =#{shikiFlag},
+        </if>
+        <if test="workGrade != null">
+            work_grade =#{workGrade},
+        </if>
+        <if test="workClass != null">
+            work_class =#{workClass},
+        </if>
+        <if test="disableFlag != null">
+            disable_flag =#{disableFlag},
+        </if>
+        <if test="updateDate != null">
+            update_date =#{updateDate}
+        </if>
+        <if test="id != null">
+            where id =#{id}
+        </if>
+    </update>
 </mapper>
