@@ -26,5 +26,11 @@ public interface StaffMapper {
      * @return 従業員一覧情報
      */
     List<Staff> searchStaffs(Staff staff);
+    /**
+     * 従業員情報検索
+     *
+     * @return 従業員一覧情報更新
+     */
+    Integer updateStaffs(Staff staff);
 
 }
