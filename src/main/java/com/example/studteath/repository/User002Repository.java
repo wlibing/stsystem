@@ -41,7 +41,5 @@ public class User002Repository {
         }else {
             return null;
         }
-
-
     }
 }

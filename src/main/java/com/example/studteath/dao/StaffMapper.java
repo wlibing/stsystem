@@ -32,5 +32,11 @@ public interface StaffMapper {
      * @return 従業員一覧情報更新
      */
     Integer updateStaffs(Staff staff);
+    /**
+     * 従業員情報削除
+     *
+     * @return 従業員一覧情報削除
+     */
+    Integer delete(Integer id);
 
 }
