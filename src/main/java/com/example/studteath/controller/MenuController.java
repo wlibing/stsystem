@@ -4,6 +4,7 @@ import com.example.studteath.dto.*;
 import com.example.studteath.entity.Student;
 import com.example.studteath.modelform.Student004Response;
 import com.example.studteath.modelform.USER004Response;
+import com.example.studteath.service.Director003Service;
 import com.example.studteath.service.Staff003Service;
 import com.example.studteath.service.Student003Service;
 import com.example.studteath.service.USER003Service;
@@ -33,6 +34,9 @@ public class MenuController {
 
     @Autowired
     Staff003Service staff003Service;
+    @Autowired
+    Director003Service director003Service;
+
     /**
      * ユーザー情報検索 Service
      */
@@ -89,6 +93,13 @@ public class MenuController {
         Staff003OutputDto out = staff003Service.searchchStaff(new Staff003InputDto());
         model.addAttribute("staffinfolist", out.getStaffInfoList());
         return "staff/search";
+    }
+
+    @RequestMapping("/searchDirector")
+    public String searchDirector(Model model) {
+        Director003OutputDto out = director003Service.searchDirector(new Director003InputDto());
+        model.addAttribute("directorinfolist", out.getDirsectorInfoList());
+        return "director/search";
     }
     @GetMapping("/user/info")
     public String userInfo(String id,Model model) {

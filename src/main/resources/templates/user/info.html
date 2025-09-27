@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"></meta>
-
+    <style>
+        body{
+            font-family: 'Black',sans-serif;
+        }
+    </style>
     <!-- Bootstrapの設定 -->
     <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
@@ -54,7 +59,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="demoModalTitle">ユーザーを削除しますか？</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+<!--                            <span aria-hidden="true">&times;</span>-->
+                            <span th:utext="'&#215;'"></span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -72,7 +78,7 @@
             </div>
         </div>
         <a th:href="@{/searchUser}" class="btn btn-secondary">一覧に戻る</a>
-        <a th:href="@{/searchUser}" class="btn btn-secondary">PDF出力</a>
+        <a th:attr="onclick='location.href=\'/download-pdf?id=' + ${userData.id} + '\''" class="btn btn-secondary">PDF出力</a>
     </div>
 </div>
 </body>
