@@ -2,6 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <title>合并单元格示例</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
     <title>Login</title>
     <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"></link>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
@@ -45,5 +62,68 @@
         document.getElementById('form').submit();
     }
 </script>
+<table>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王五</td>
+        <td>28</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th rowspan="2">编号</th>
+        <th rowspan="2">姓名</th>
+        <th colspan="2">联系方式</th>
+        <th rowspan="2">年龄</th>
+    </tr>
+    <tr>
+        <th>电话</th>
+        <th>邮箱</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>123-4567</td>
+        <td>zhangsan@example.com</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>234-5678</td>
+        <td>lisi@example.com</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td rowspan="2">王五</td>
+        <td>345-6789</td>
+        <td>wangwu@example.com</td>
+        <td>28</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>987-6543</td>
+        <td>wangwu2@example.com</td>
+        <td>28</td>
+    </tr>
+</table>
+
 </body>
 </html>

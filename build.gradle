@@ -31,7 +31,10 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.webjars:jquery-ui:1.13.1'
 	implementation 'org.webjars:bootstrap:4.4.1-1'
+	implementation 'com.openhtmltopdf:openhtmltopdf-pdfbox:1.0.10'
+	implementation 'com.openhtmltopdf:openhtmltopdf-slf4j:1.0.10'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
